@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * An interface that represents a ChestRestock "chest".  Chest being any sort of block based inventory.
+ * An interface that represents a ChestRestock "chest". Chest being any sort of block based inventory.
  */
 public interface CRChest extends Config, CRChestOptions {
 
@@ -57,8 +57,9 @@ public interface CRChest extends Config, CRChestOptions {
 
     /**
      * Indicates the maximum size of an inventory.
-     * @deprecated as of release 2.3.  Use {@link CRConfig#MAX_INVENTORY_SIZE} and
-     * {@link com.dumptruckman.chestrestock.api.CRChest.Constants#getMaxInventorySize()} instead.
+     * 
+     * @deprecated as of release 2.3. Use {@link CRConfig#MAX_INVENTORY_SIZE} and
+     *             {@link com.dumptruckman.chestrestock.api.CRChest.Constants#getMaxInventorySize()} instead.
      */
     @Deprecated
     int MAX_SIZE = 54;
@@ -87,7 +88,7 @@ public interface CRChest extends Config, CRChestOptions {
             }).build();
 
     /**
-     * Data pertaining to players interacting with this chest.  See {@link CRPlayer}
+     * Data pertaining to players interacting with this chest. See {@link CRPlayer}
      */
     MappedConfigEntry<CRPlayer> PLAYERS = new EntryBuilder<CRPlayer>(CRPlayer.class, "players")
             .serializer(new EntrySerializer<CRPlayer>() {
@@ -138,7 +139,7 @@ public interface CRChest extends Config, CRChestOptions {
      */
     ConfigEntry<Long> LAST_RESTOCK = new EntryBuilder<Long>(Long.class, "lastRestockTime").def(0L).stringSerializer().build();
 
-    //ConfigEntry<Long> CREATION_TIME = new EntryBuilder<Long>(Long.class, "creationTime").def(0L).stringSerializer().build();
+    // ConfigEntry<Long> CREATION_TIME = new EntryBuilder<Long>(Long.class, "creationTime").def(0L).stringSerializer().build();
     /**
      * @return The location of this chest.
      */
@@ -155,12 +156,12 @@ public interface CRChest extends Config, CRChestOptions {
     InventoryHolder getInventoryHolder();
 
     /**
-     * Retrieves the inventory for this CRChest.  If player is null or this chest is not {@link CRChest#UNIQUE} this
-     * inventory will be the physical inventory of the block.  Otherwise, a unique "fake" (non-block based) inventory
+     * Retrieves the inventory for this CRChest. If player is null or this chest is not {@link CRChest#UNIQUE} this
+     * inventory will be the physical inventory of the block. Otherwise, a unique "fake" (non-block based) inventory
      * will be returned.
      *
      * @param player The player to get the inventory for if the chest is {@link CRChest#UNIQUE} or null to always
-     *               get the physical inventory.
+     *            get the physical inventory.
      * @return The physical inventory or a unique inventory for the player.
      */
     Inventory getInventory(HumanEntity player);
@@ -169,7 +170,7 @@ public interface CRChest extends Config, CRChestOptions {
      * Updates the items to restock with with the inventory's current contents.
      *
      * @param player The player causing the update which is needed if the chest is {@link CRChest#UNIQUE} otherwise
-     *               null to update with the contents of the physical inventory.
+     *            null to update with the contents of the physical inventory.
      */
     void update(HumanEntity player);
 
@@ -187,8 +188,8 @@ public interface CRChest extends Config, CRChestOptions {
     void restockAllInventories();
 
     /**
-     * Opens the inventory of this chest for the player passed in.  This causes the chest to consider restocking.
-     * null may be used to possibly trigger restocking on the physical inventory.  This will literally open the
+     * Opens the inventory of this chest for the player passed in. This causes the chest to consider restocking.
+     * null may be used to possibly trigger restocking on the physical inventory. This will literally open the
      * inventory window for the player passed in.
      *
      * @param player The player to open the inventory window for or null.

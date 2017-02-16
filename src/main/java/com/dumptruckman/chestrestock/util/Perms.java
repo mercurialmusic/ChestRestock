@@ -3,9 +3,9 @@ package com.dumptruckman.chestrestock.util;
 import com.dumptruckman.minecraft.pluginbase.permission.Perm;
 
 public class Perms {
-    
+
     private static final String BASE_PERM = "chestrestock.";
-    
+
     public static final Perm CMD_CREATE = new Perm.Builder(BASE_PERM + "cmd.create").commandPermission().build();
     public static final Perm CMD_CHECK = new Perm.Builder(BASE_PERM + "cmd.check").commandPermission().build();
     public static final Perm CMD_UPDATE = new Perm.Builder(BASE_PERM + "cmd.update").commandPermission().build();

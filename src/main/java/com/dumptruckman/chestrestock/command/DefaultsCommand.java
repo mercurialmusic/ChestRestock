@@ -20,7 +20,7 @@ public class DefaultsCommand extends CRCommand {
     private static final List<String> CHECK_MESSAGES = new LinkedList<String>();
 
     static {
-        //int count = 2;
+        // int count = 2;
         for (Field field : CRDefaults.class.getFields()) {
             if (!ConfigEntry.class.isAssignableFrom(field.getType())) {
                 continue;
@@ -32,8 +32,9 @@ public class DefaultsCommand extends CRCommand {
                 }
                 PROPS_LIST.add(entry);
                 CHECK_MESSAGES.add("\u00a7b" + field.getName().toLowerCase() + ":\u00a7f %s");
-                //count++;
-            } catch (IllegalAccessException ignore) { }
+                // count++;
+            } catch (IllegalAccessException ignore) {
+            }
         }
     }
 

@@ -34,7 +34,7 @@ public interface CRConfig extends BaseConfig {
             .comment("# Ignore this if you're not using Multiverse-Adventure").buildList();
 
     /**
-     * The maximum size of any inventory.  This is used for inventory mod support.
+     * The maximum size of any inventory. This is used for inventory mod support.
      */
     ConfigEntry<Integer> MAX_INVENTORY_SIZE = new EntryBuilder<Integer>(Integer.class, "settings.max_inventory_size")
             .def(CRChest.Constants.getMaxInventorySize())
@@ -66,58 +66,57 @@ public interface CRConfig extends BaseConfig {
     ConfigEntry<Null> DEFAULTS = new EntryBuilder<Null>(Null.class, "defaults")
             .comment("# All defaults have been moved to global_defaults.yml.  You may delete this section!").build();
 
-
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<Boolean> PRESERVE_SLOTS = new EntryBuilder<Boolean>(Boolean.class, "defaults.preserve_slots").def(true)
             .deprecated().build();
 
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<Boolean> INDESTRUCTIBLE = new EntryBuilder<Boolean>(Boolean.class, "defaults.indestructible").def(true)
             .deprecated().build();
 
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<Integer> PLAYER_LIMIT = new EntryBuilder<Integer>(Integer.class, "defaults.player_loot_limit").def(-1)
             .deprecated().build();
 
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<Boolean> UNIQUE = new EntryBuilder<Boolean>(Boolean.class, "defaults.unique").def(true)
             .deprecated().build();
 
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<Boolean> REDSTONE = new EntryBuilder<Boolean>(Boolean.class, "defaults.redstone").def(false)
             .deprecated().build();
 
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<Boolean> ACCEPT_POLL = new EntryBuilder<Boolean>(Boolean.class, "defaults.accept_poll").def(false)
             .deprecated().build();
 
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<Integer> PERIOD = new EntryBuilder<Integer>(Integer.class, "defaults.period").def(900)
             .deprecated().build();
 
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<String> PERIOD_MODE = new EntryBuilder<String>(String.class, "defaults.period_mode").def("player")
@@ -135,7 +134,7 @@ public interface CRConfig extends BaseConfig {
             }).deprecated().build();
 
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<String> RESTOCK_MODE = new EntryBuilder<String>(String.class, "defaults.restock_mode").def("replace")
@@ -153,14 +152,14 @@ public interface CRConfig extends BaseConfig {
             }).deprecated().build();
 
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<String> NAME = new EntryBuilder<String>(String.class, "defaults.name").def("")
             .deprecated().build();
 
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<String> LOOT_TABLE = new EntryBuilder<String>(String.class, "loot_table").def("")
@@ -168,7 +167,7 @@ public interface CRConfig extends BaseConfig {
             .deprecated().build();
 
     /**
-     * @deprecated as of release 2.3.  Moved to {@link CRChestOptions}
+     * @deprecated as of release 2.3. Moved to {@link CRChestOptions}
      */
     @Deprecated
     ConfigEntry<String> GLOBAL_MESSAGE = new EntryBuilder<String>(String.class, "global_message").def("")

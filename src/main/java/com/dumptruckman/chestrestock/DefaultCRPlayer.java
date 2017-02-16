@@ -3,7 +3,7 @@ package com.dumptruckman.chestrestock;
 import com.dumptruckman.chestrestock.api.CRPlayer;
 
 class DefaultCRPlayer implements CRPlayer {
-    
+
     private int lootCount;
     private long lastRestockTime;
 

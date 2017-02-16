@@ -30,8 +30,8 @@ public interface LootTable {
         int getRolls();
 
         /**
-         * @return A map of the children section with keys representing the chance of that section.  The value
-         * is a Set since multiple sections may have the same chance.
+         * @return A map of the children section with keys representing the chance of that section. The value
+         *         is a Set since multiple sections may have the same chance.
          */
         Map<Float, Set<LootSection>> getChildSections();
 

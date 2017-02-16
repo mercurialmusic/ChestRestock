@@ -6,7 +6,7 @@ import com.dumptruckman.minecraft.pluginbase.config.EntryBuilder;
 import com.dumptruckman.minecraft.pluginbase.util.Null;
 
 /**
- * Relates to the Defaults for new CRChests.  The entries here are not actual chest properties but affect chest
+ * Relates to the Defaults for new CRChests. The entries here are not actual chest properties but affect chest
  * creation.
  */
 public interface CRDefaults extends CRChestOptions {

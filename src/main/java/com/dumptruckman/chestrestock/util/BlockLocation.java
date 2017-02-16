@@ -6,7 +6,7 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 
 public class BlockLocation {
-    
+
     private static final String DELIMITER = "_";
 
     private final String world;
@@ -39,7 +39,7 @@ public class BlockLocation {
     public final World getWorld() {
         return Bukkit.getWorld(this.world);
     }
-    
+
     public final Block getBlock() {
         World world = getWorld();
         if (world == null) {
@@ -72,7 +72,7 @@ public class BlockLocation {
             if (this.getWorld().equals(otherLoc.getWorld())
                     && this.getX() == otherLoc.getX()
                     && this.getY() == otherLoc.getY()
-                    && this.getZ() == otherLoc.getZ())  {
+                    && this.getZ() == otherLoc.getZ()) {
                 return true;
             }
         }
@@ -83,7 +83,7 @@ public class BlockLocation {
     public int hashCode() {
         return this.toString().hashCode();
     }
-    
+
     public static BlockLocation get(String stringFormat) {
         String[] sections = stringFormat.split(DELIMITER, 4);
         if (sections.length != 4) {

@@ -1,14 +1,10 @@
 package com.dumptruckman.chestrestock;
 
-import com.dumptruckman.chestrestock.api.CRChest;
-import com.dumptruckman.chestrestock.api.CRPlayer;
-import com.dumptruckman.chestrestock.api.ChestRestock;
-import com.dumptruckman.chestrestock.api.LootTable;
-import com.dumptruckman.chestrestock.util.BlockLocation;
-import com.dumptruckman.chestrestock.util.InventoryTools;
-import com.dumptruckman.chestrestock.util.Perms;
-import com.dumptruckman.minecraft.pluginbase.config.AbstractYamlConfig;
-import com.dumptruckman.minecraft.pluginbase.util.Logging;
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -18,16 +14,21 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import com.dumptruckman.chestrestock.api.CRChest;
+import com.dumptruckman.chestrestock.api.CRPlayer;
+import com.dumptruckman.chestrestock.api.ChestRestock;
+import com.dumptruckman.chestrestock.api.LootTable;
+import com.dumptruckman.chestrestock.util.BlockLocation;
+import com.dumptruckman.chestrestock.util.InventoryTools;
+import com.dumptruckman.chestrestock.util.Perms;
+import com.dumptruckman.minecraft.pluginbase.config.AbstractYamlConfig;
+import com.dumptruckman.minecraft.pluginbase.util.Logging;
 
 class DefaultCRChest extends AbstractYamlConfig<CRChest> implements CRChest {
-    
+
     private ChestRestock plugin;
     private BlockLocation location;
-    
+
     private Map<String, Inventory> playerInventories = new HashMap<String, Inventory>();
 
     DefaultCRChest(ChestRestock plugin, BlockLocation location, File configFile, Class<? extends CRChest>... configClasses) throws IOException {
@@ -86,13 +87,14 @@ class DefaultCRChest extends AbstractYamlConfig<CRChest> implements CRChest {
                     Logging.fine("Workaround: Non-chest unique inventories are currently disabled due to Bukkit bug! returning physical inventory...");
                     inventory = getInventoryHolder().getInventory();
                     return inventory;
-                    /* TODO Re-add this when https://bukkit.atlassian.net/browse/BUKKIT-1929 is fixed.
-                    inventory = Bukkit.createInventory(getInventoryHolder(),
-                            getInventoryHolder().getInventory().getType());
-                    Logging.finer("Created new other inventory for: " + player);
-                    */
+                    /*
+                     * TODO Re-add this when https://bukkit.atlassian.net/browse/BUKKIT-1929 is fixed.
+                     * inventory = Bukkit.createInventory(getInventoryHolder(),
+                     * getInventoryHolder().getInventory().getType());
+                     * Logging.finer("Created new other inventory for: " + player);
+                     */
                 }
-                //inventory.setContents(getInventoryHolder().getInventory().getContents());
+                // inventory.setContents(getInventoryHolder().getInventory().getContents());
                 playerInventories.put(player.getName(), inventory);
             } else {
                 Logging.finer("Got existing unique inventory for: " + player);
@@ -120,21 +122,21 @@ class DefaultCRChest extends AbstractYamlConfig<CRChest> implements CRChest {
 
     @Override
     public CRPlayer getPlayerData(String name) {
-        assert(name != null);
+        assert (name != null);
         CRPlayer player = get(PLAYERS.specific(name));
         if (player == null) {
             player = Players.newCRPlayer();
         }
         return player;
     }
-    
+
     private void updatePlayerData(String name, CRPlayer player) {
-        assert(name != null);
-        assert(player != null);
+        assert (name != null);
+        assert (player != null);
         set(PLAYERS.specific(name), player);
         save();
     }
-    
+
     private boolean maybeRestock(HumanEntity player, CRPlayer crPlayer, Inventory inventory) {
         boolean restock = false;
         long accessTime = System.currentTimeMillis();
@@ -145,9 +147,9 @@ class DefaultCRChest extends AbstractYamlConfig<CRChest> implements CRChest {
         }
         if (crPlayer != null && get(UNIQUE)) {
             lastRestock = crPlayer.getLastRestockTime();
-            //if (lastRestock == 0) {
-            //    lastRestock = get(LAST_RESTOCK);
-            //}
+            // if (lastRestock == 0) {
+            // lastRestock = get(LAST_RESTOCK);
+            // }
         }
         if (player == null || get(PLAYER_LIMIT) < 0 || hasLootBypass(player) || crPlayer.getLootCount() < get(PLAYER_LIMIT)) {
             Logging.finer("Last restock (unique: " + get(UNIQUE) + "): " + lastRestock + "  Access time: " + accessTime + "  Time diff: " + (accessTime - lastRestock));
@@ -197,7 +199,7 @@ class DefaultCRChest extends AbstractYamlConfig<CRChest> implements CRChest {
         save();
         return restock;
     }
-    
+
     public void restock(Inventory inventory) {
         if (get(RESTOCK_MODE).equalsIgnoreCase(RESTOCK_MODE_REPLACE)) {
             Logging.finest("Clearing inventory before restock");
@@ -212,7 +214,7 @@ class DefaultCRChest extends AbstractYamlConfig<CRChest> implements CRChest {
                 if (existingItem != null
                         && existingItem.getType() == restockItem.getType()
                         && existingItem.getDurability() == restockItem.getDurability()
-                        && existingItem.getEnchantments().equals(restockItem.getEnchantments())) {
+                        && existingItem.getItemMeta().equals(restockItem.getItemMeta())) {
                     int newAmount = existingItem.getAmount();
                     newAmount += restockItem.getAmount();
                     if (newAmount > existingItem.getType().getMaxStackSize()) {

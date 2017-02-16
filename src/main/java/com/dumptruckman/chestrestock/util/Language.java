@@ -4,7 +4,7 @@ import com.dumptruckman.chestrestock.api.CRChest.Constants;
 import com.dumptruckman.minecraft.pluginbase.locale.Message;
 
 public class Language {
-    
+
     public static final Message IN_GAME_ONLY = new Message("cmd.in_game_only",
             "You may only use this command in game!");
     public static final Message TARGETING = new Message("cmd.targeting",
@@ -148,5 +148,6 @@ public class Language {
     public static final Message MAX_INVENTORY_SIZE_INVALID = new Message("settings.max_inventory_size.invalid",
             "You must specify a number that is equal to or larger than " + Constants.MIN_MAX_INVENTORY_SIZE);
 
-    public static void init() { }
+    public static void init() {
+    }
 }

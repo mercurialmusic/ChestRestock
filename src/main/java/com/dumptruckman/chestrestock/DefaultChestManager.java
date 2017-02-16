@@ -36,10 +36,10 @@ class DefaultChestManager implements ChestManager {
 
     private ChestRestock plugin;
     private File chestsFile;
-    
+
     private Map<BlockLocation, CRChest> chestsMap = new HashMap<BlockLocation, CRChest>();
     private Set<CRChest> pollingSet = new LinkedHashSet<CRChest>();
-    
+
     DefaultChestManager(ChestRestock plugin) {
         this.plugin = plugin;
         chestsFile = new File(plugin.getDataFolder(), "chests");
@@ -95,11 +95,11 @@ class DefaultChestManager implements ChestManager {
             }
         }
     }
-    
+
     private File getWorldFolder(String worldName) {
         return new File(chestsFile, worldName);
     }
-    
+
     private File getChestFile(BlockLocation location) {
         return new File(getWorldFolder(location.getWorldName()), location.toString() + EXT);
     }
@@ -149,8 +149,8 @@ class DefaultChestManager implements ChestManager {
     public CRChest getChest(Block block, InventoryHolder holder) {
         return getChest(block);
     }
-    
-    //public void removeChest()
+
+    // public void removeChest()
 
     @Override
     public CRChest newChest(Block block, InventoryHolder holder) {
@@ -186,8 +186,9 @@ class DefaultChestManager implements ChestManager {
                     obj = globals.get(entry);
                 }
                 rChest.set(entry, obj);
-                //count++;
-            } catch (IllegalAccessException ignore) { }
+                // count++;
+            } catch (IllegalAccessException ignore) {
+            }
         }
 
         if (InventoryTools.isEmpty(holder.getInventory().getContents())) {
@@ -201,7 +202,7 @@ class DefaultChestManager implements ChestManager {
         }
 
         rChest.set(CRChest.LAST_RESTOCK, 0L);
-        //rChest.set(CRChest.CREATION_TIME, System.currentTimeMillis());
+        // rChest.set(CRChest.CREATION_TIME, System.currentTimeMillis());
         rChest.update(null);
         pollingCheckIn(rChest);
         chestsMap.put(rChest.getLocation(), rChest);

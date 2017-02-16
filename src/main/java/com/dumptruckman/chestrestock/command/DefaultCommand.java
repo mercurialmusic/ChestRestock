@@ -30,7 +30,8 @@ public class DefaultCommand extends CRCommand {
                     continue;
                 }
                 PROPS_MAP.put(field.getName().toLowerCase(), entry);
-            } catch (IllegalAccessException ignore) { }
+            } catch (IllegalAccessException ignore) {
+            }
         }
         for (String key : PROPS_MAP.keySet()) {
             if (!propsString.isEmpty()) {

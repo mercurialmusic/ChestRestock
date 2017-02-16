@@ -89,7 +89,7 @@ public interface CRChestOptions extends Config {
      */
     String PERIOD_MODE_FIXED = "fixed";
     /**
-     * The way in which the period of this chest works.  Whether it is fixed or based on when a player last opened
+     * The way in which the period of this chest works. Whether it is fixed or based on when a player last opened
      * the chest and caused a restock.
      */
     ConfigEntry<String> PERIOD_MODE = new EntryBuilder<String>(String.class, "period_mode").def(PERIOD_MODE_PLAYER)

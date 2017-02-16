@@ -284,7 +284,7 @@ public class ChestRestockListener implements Listener {
             chestDestroyed(event.getBlock());
         }
     }
-    
+
     private boolean chestBreak(Block block, Player player) {
         if (!(block.getState() instanceof InventoryHolder)) {
             return false;

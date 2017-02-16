@@ -11,7 +11,6 @@ import java.util.List;
 
 public class RestockCommand extends TargetedChestRestockCommand {
 
-
     public RestockCommand(ChestRestock plugin) {
         super(plugin);
         this.setName(messager.getMessage(Language.CMD_RESTOCK_NAME));

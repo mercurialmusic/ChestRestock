@@ -6,20 +6,20 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 /**
- * The main interface of the ChestRestock plugin.  You can use this for casting Plugin when got from Bukkit's
+ * The main interface of the ChestRestock plugin. You can use this for casting Plugin when got from Bukkit's
  * plugin manager.
  */
 public interface ChestRestock extends BukkitPlugin<CRConfig>, Plugin {
 
     /**
-     * @return The chest manager for this plugin.  This is where most of the business starts.
+     * @return The chest manager for this plugin. This is where most of the business starts.
      */
     ChestManager getChestManager();
 
     /**
-     * Retrieves the default chest settings for a specified world.  If null is passed in, it will retrieve the
-     * global defaults.  World defaults may not contain all values.  For values not contained, null is returned
-     * from the get() method.  In this case, global defaults are generally checked as the global defaults
+     * Retrieves the default chest settings for a specified world. If null is passed in, it will retrieve the
+     * global defaults. World defaults may not contain all values. For values not contained, null is returned
+     * from the get() method. In this case, global defaults are generally checked as the global defaults
      * contains every value whether or not they are explicitly set.
      *
      * @param world The world to get defaults for or null for global defaults.
@@ -33,7 +33,7 @@ public interface ChestRestock extends BukkitPlugin<CRConfig>, Plugin {
     LootConfig getLootConfig();
 
     /**
-     * @return true if the ChestManager for the plugin has been loaded.  Added to prevent recursive errors!
+     * @return true if the ChestManager for the plugin has been loaded. Added to prevent recursive errors!
      */
     boolean hasChestManagerLoaded();
 

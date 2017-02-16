@@ -1,5 +1,20 @@
 package com.dumptruckman.chestrestock;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.plugin.PluginManager;
+
 import com.dumptruckman.chestrestock.api.CRChest;
 import com.dumptruckman.chestrestock.api.CRConfig;
 import com.dumptruckman.chestrestock.api.CRDefaults;
@@ -21,18 +36,6 @@ import com.dumptruckman.chestrestock.util.Language;
 import com.dumptruckman.minecraft.pluginbase.plugin.AbstractBukkitPlugin;
 import com.dumptruckman.minecraft.pluginbase.plugin.command.HelpCommand;
 import com.dumptruckman.minecraft.pluginbase.util.Logging;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.plugin.PluginManager;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 
 public class ChestRestockPlugin extends AbstractBukkitPlugin<CRConfig> implements ChestRestock {
 
@@ -44,6 +47,7 @@ public class ChestRestockPlugin extends AbstractBukkitPlugin<CRConfig> implement
     private File defaultsFolder;
     private File defaultsFile;
 
+    @SuppressWarnings("unchecked")
     @Override
     protected CRConfig newConfigInstance() throws IOException {
         return new CommentedConfig(this, true, new File(getDataFolder(), "config.yml"), CRConfig.class);
@@ -120,6 +124,7 @@ public class ChestRestockPlugin extends AbstractBukkitPlugin<CRConfig> implement
         }
     }
 
+    @SuppressWarnings("deprecation")
     private void migrateDefaults() {
         if (config().get(CRConfig.NAME) != null) {
             getDefaults(null).set(CRDefaults.NAME, config().get(CRConfig.NAME));
@@ -225,7 +230,7 @@ public class ChestRestockPlugin extends AbstractBukkitPlugin<CRConfig> implement
 
     @Override
     public Block getTargetedInventoryHolder(Player player) throws IllegalStateException {
-        Block block = player.getTargetBlock(null, 100);
+        Block block = player.getTargetBlock(new HashSet<Material>(), 100);
         if (block == null || !(block.getState() instanceof InventoryHolder)) {
             throw new IllegalStateException(getMessager().getMessage(Language.TARGETING));
         }

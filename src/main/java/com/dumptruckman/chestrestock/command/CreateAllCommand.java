@@ -125,7 +125,7 @@ public class CreateAllCommand extends QueuedPluginCommand<ChestRestockPlugin> {
 
     @Override
     public void onConfirm(CommandSender sender, List<String> args) {
-        CreateAllData data = (CreateAllData) getData(sender);
+        // CreateAllData data = (CreateAllData) getData(sender);
 
     }
 
@@ -136,9 +136,10 @@ public class CreateAllCommand extends QueuedPluginCommand<ChestRestockPlugin> {
 
     @Override
     public void onExpire(CommandSender sender, List<String> args) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        // To change body of implemented methods use File | Settings | File Templates.
     }
 
+    @SuppressWarnings("unused")
     private class CreateAllData {
 
         private World world;
